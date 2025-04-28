@@ -21,7 +21,8 @@ A(User) -->|writes| B(React Front-End)
 B -->|POST /api/claude-stream| C(Node Server)
 C -->|stream| B
 B -->|shows text live| A
-
+```
+```mermaid
 flowchart TD
   User([User Browser]) -->|writes prompt| Frontend([React Frontend])
   Frontend -->|POST /api/ai-request| Backend([Node.js Server])
