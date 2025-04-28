@@ -23,6 +23,25 @@ C -->|stream| B
 B -->|shows text live| A
 ```
 
+```flowchart TD
+  User([User Browser]) -->|writes prompt| Frontend([React Frontend])
+  Frontend -->|POST /api/ai-request| Backend([Node.js Server])
+  
+  Backend -->|Validate & Prepare| Middleware([Middleware Layer])
+  
+  Middleware -->|Send request| AIAPI([External AI API like OpenAI, Claude, Gemini])
+  
+  AIAPI -->|Streams tokens| StreamHandler([Streaming Handler])
+  StreamHandler -->|Emit partial text| WebSocket([WebSocket Connection])
+  WebSocket -->|Update UI| Frontend
+  
+  Frontend -->|Display live response| User
+  
+  Backend -->|Logs request & response| Database[(Database)]
+  
+  click AIAPI "https://openai.com" _blank
+```
+
 * **Front-End:** Text box ✏️ + “Send” button + area to display Claude’s reply.  
 * **Back-End:** Receives your text ➜ asks Claude ➜ sends reply back **chunk-by-chunk**.
 
