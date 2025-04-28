@@ -28,20 +28,9 @@ Feel free to explore, learn, and adapt the code to your own projects!
 
 ### 🌟 Projects Available  
 
-💡 **ChatGPT Clone:** 👉 [Get the Code](https://www.the-aideveloper.com/products/ez94_t)  
-💡 **Gemini Clone:** 👉 [Get the Code](https://www.the-aideveloper.com/products/ABktLQ)  
-💡 **NodeAPI:** 👉 [Get the Code](https://www.the-aideveloper.com/products/dMVTnM)  
-💡 **Voice AI:** 👉 [Get the Code](https://www.the-aideveloper.com/products/G4rfGx)  
-💡 **DocumentAI:** 👉 [Get the Code](https://www.the-aideveloper.com/products/7HVdbq)  
-💡 **FlowAI:** 👉 [Get the Code](https://www.the-aideveloper.com/products/f6-3Am)  
-💡 **VideoAI:** 👉 [Get the Code](https://www.the-aideveloper.com/products/9jiaLF)  
+💡 **ChatGPT Dev Tool Kit:** 👉 [Get the Code](https://checkout.the-aideveloper.com/b/4gw6p74j41YSf0Q5lf)
 
----
 
-### 🔥 CoreGPT Packages  
-
-👉 **CoreGPT React + NodeJS**: [Get It Here](https://checkout.the-aideveloper.com/b/14keVD7vgcDw4mc6pb)  
-👉 **CoreGPT React + Python FastAPI**: [Get It Here](https://checkout.the-aideveloper.com/b/dR614N8zkdHA8CseVI)  
 
 ---
 
