@@ -3,20 +3,13 @@
 ## What You'll Create
 A simple chatbot that uses OpenAI's new Responses API - letting you see both the AI's answer AND its reasoning process!
 
-![Example of the finished chatbot with UI](https://i.imgur.com/placeholder.jpg)
-
-## Why This Is Cool
-- **Beginner-Friendly**: Error-proof code with helpful comments
-- **Shows AI Thinking**: See how the AI reasons through answers with the `reasoning_summary` feature
-- **Good Looking UI**: Includes simple styling so your chatbot looks professional
-
 ## What You Need Before Starting
 - Basic knowledge of JavaScript
 - Node.js installed on your computer (download from [nodejs.org](https://nodejs.org))
 - A text editor (like [VS Code](https://code.visualstudio.com/))
 - An OpenAI account with an API key ([Get one here](https://platform.openai.com/signup))
 
-## Step-by-Step Instructions (With Pictures!)
+## Step-by-Step Instructions 
 
 ### Step 1: Create a New React Project
 Open your terminal/command prompt (search for "Terminal" or "Command Prompt" on your computer).
@@ -26,8 +19,6 @@ Type this command and press Enter:
 npm create vite@latest ai-chatbot -- --template react
 ```
 
-You'll see something like this:
-![Terminal showing project creation](https://i.imgur.com/placeholder1.jpg)
 
 When it finishes, type this command to enter your new project folder:
 ```bash
@@ -41,10 +32,7 @@ npm install
 ```
 This installs the basic React packages.
 
-Then install the OpenAI package:
-```bash
-npm i openai
-```
+
 
 ### Step 3: Add Your API Key
 1. Create a new file called `.env` in your project's main folder
@@ -61,7 +49,6 @@ VITE_OPENAI_KEY=sk-...
 ### Step 4: Create Your Chat Component
 Create a new file called `Chat.jsx` in the `src` folder and paste this code:
 
-```jsx
 import { useState } from "react";
 
 // Function that calls the OpenAI API with the updated response format
@@ -75,58 +62,50 @@ const chat = async (userMessage) => {
         Authorization: `Bearer ${import.meta.env.VITE_OPENAI_KEY}`,
       },
       body: JSON.stringify({
-        model: "o3", // OpenAI's reasoning-capable model
+        model: "gpt-4o-mini", // OpenAI's reasoning-capable model
         input: [{ role: "user", content: userMessage }], // Changed from 'messages' to 'input'
-        reasoning: { effort: "medium" }, // Changed from 'reasoning_summary' to 'reasoning'
       }),
     });
-    
+
     // Convert the response to JSON
     const data = await response.json();
-    
+
     // Log the response for debugging
     console.log("API Response:", data);
-    
+
     // Check if we have the expected data structure based on the new format
     if (!data || !data.output) {
       console.error("Unexpected API response format:", data);
       return {
-        message: "Sorry, I received an unexpected response format. Please try again.",
-        reasoning: "Error processing response"
+        message:
+          "Sorry, I received an unexpected response format. Please try again.",
+        reasoning: "Error processing response",
       };
     }
-    
+
     // Extract the message from the new response structure
     let message = "No response found";
-    let reasoning = "No reasoning available";
-    
+
     // Find the message output in the array
-    const messageOutput = data.output.find(item => item.type === "message");
-    if (messageOutput && messageOutput.content && messageOutput.content[0] && messageOutput.content[0].text) {
+    const messageOutput = data.output.find((item) => item.type === "message");
+    if (
+      messageOutput &&
+      messageOutput.content &&
+      messageOutput.content[0] &&
+      messageOutput.content[0].text
+    ) {
       message = messageOutput.content[0].text;
     }
-    
-    // Find reasoning if available
-    const reasoningOutput = data.output.find(item => item.type === "reasoning");
-    if (reasoningOutput && reasoningOutput.summary) {
-      reasoning = Array.isArray(reasoningOutput.summary) 
-        ? reasoningOutput.summary.join("\n") 
-        : reasoningOutput.summary || "AI thought about this.";
-    } else if (data.reasoning && data.reasoning.summary) {
-      reasoning = data.reasoning.summary || "AI thought about this.";
-    }
-    
+
     // Return the extracted data
     return {
       message: message,
-      reasoning: reasoning
     };
   } catch (error) {
     // Handle any errors
     console.error("Error calling OpenAI API:", error);
     return {
       message: "Sorry, there was an error communicating with the AI service.",
-      reasoning: "Error calling API"
     };
   }
 };
@@ -135,10 +114,10 @@ const chat = async (userMessage) => {
 export default function Chat() {
   // State to store the current message being typed
   const [msg, setMsg] = useState("");
-  
+
   // State to store our chat history
   const [log, setLog] = useState([]);
-  
+
   // State to track if we're currently waiting for a response
   const [isLoading, setIsLoading] = useState(false);
 
@@ -146,33 +125,29 @@ export default function Chat() {
   const handleSendMessage = async () => {
     // Don't do anything if the message is empty
     if (!msg.trim()) return;
-    
+
     // Add user message to chat log immediately
     const userMessage = msg;
-    setLog(prevLog => [...prevLog, `🧑 ${userMessage}`]);
-    
+    setLog((prevLog) => [...prevLog, `🧑 ${userMessage}`]);
+
     // Clear input field
     setMsg("");
-    
+
     // Show loading state
     setIsLoading(true);
-    
+
     try {
       // Call the OpenAI API
       const result = await chat(userMessage);
-      
+
       // Add AI response to chat log
-      setLog(prevLog => [
-        ...prevLog,
-        `🤖 ${result.message}`,
-        `🧩 ${result.reasoning}`
-      ]);
+      setLog((prevLog) => [...prevLog, `🤖 ${result.message}`]);
     } catch (error) {
       // Handle any errors
       console.error("Error in handleSendMessage:", error);
-      setLog(prevLog => [
+      setLog((prevLog) => [
         ...prevLog,
-        "❌ Sorry, something went wrong. Please try again."
+        "❌ Sorry, something went wrong. Please try again.",
       ]);
     } finally {
       // Hide loading state
@@ -181,34 +156,44 @@ export default function Chat() {
   };
 
   return (
-    <div style={{ fontFamily: "Arial, sans-serif", maxWidth: "600px", margin: "0 auto" }}>
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        width: "100vw",
+        margin: "0 auto",
+        gap: "10px",
+        alignItems: "center",
+      }}
+    >
       {/* Chat history display */}
-      <div 
-        style={{ 
-          height: "400px", 
-          overflowY: "auto", 
-          border: "1px solid #ccc", 
+      <div
+        style={{
+          height: "400px",
+          overflowY: "auto",
+          border: "1px solid #ccc",
           padding: "10px",
-          marginBottom: "10px",
+          width: "50%",
           borderRadius: "5px",
-          backgroundColor: "#f9f9f9"
+          backgroundColor: "#f9f9f9",
+          margin: "0 auto",
         }}
       >
         {log.length === 0 ? (
-          <div style={{ color: "#666", textAlign: "center", marginTop: "180px" }}>
+          <div
+            style={{ color: "#666", textAlign: "center", marginTop: "180px" }}
+          >
             Type a message below to start chatting!
           </div>
         ) : (
           log.map((entry, index) => (
-            <div 
-              key={index} 
+            <div
+              key={index}
               style={{
                 margin: "8px 0",
                 padding: "8px",
                 borderRadius: "5px",
-                backgroundColor: entry.startsWith("🧑") ? "#e1f5fe" : 
-                                 entry.startsWith("🤖") ? "#f0f4c3" :
-                                 entry.startsWith("🧩") ? "#e8eaf6" : "#ffebee"
+                backgroundColor: entry.startsWith("🧑") ? "#e1f5fe" : "#f0f4c3",
               }}
             >
               {entry}
@@ -216,9 +201,9 @@ export default function Chat() {
           ))
         )}
       </div>
-      
+
       {/* Message input area */}
-      <div style={{ display: "flex", gap: "10px" }}>
+      <div style={{ display: "flex", gap: "10px", width: "50%" }}>
         <input
           value={msg}
           onChange={(e) => setMsg(e.target.value)}
@@ -228,15 +213,15 @@ export default function Chat() {
             }
           }}
           placeholder="Type a message and press Enter"
-          style={{ 
-            flex: 1, 
+          style={{
+            flex: 1,
             padding: "10px",
             borderRadius: "5px",
-            border: "1px solid #ccc"
+            border: "1px solid #ccc",
           }}
           disabled={isLoading}
         />
-        <button 
+        <button
           onClick={handleSendMessage}
           disabled={isLoading || !msg.trim()}
           style={{
@@ -245,7 +230,7 @@ export default function Chat() {
             color: "white",
             border: "none",
             borderRadius: "5px",
-            cursor: isLoading ? "not-allowed" : "pointer"
+            cursor: isLoading ? "not-allowed" : "pointer",
           }}
         >
           {isLoading ? "Sending..." : "Send"}
@@ -289,7 +274,6 @@ Open the URL shown in your terminal (usually http://localhost:5173) to see your 
 3. Watch as the chatbot displays:
    - Your question (in blue)
    - The AI's answer (in light green)
-   - How the AI thought about your question (in purple)
 
 ![Example conversation with the chatbot](https://i.imgur.com/placeholder3.jpg)
 
@@ -310,16 +294,6 @@ This is a security feature of browsers. To fix it:
 
 ## Make Your Chatbot Even Better!
 
-### Show More Detailed AI Thinking
-To see more detailed reasoning, find this line:
-```jsx
-reasoning_summary: "concise",
-```
-
-And change it to:
-```jsx
-reasoning_summary: "detailed",
-```
 
 ### Make Your Bot Remember the Conversation
 To make your bot remember previous messages, you'll need to store the conversation history. Find:
