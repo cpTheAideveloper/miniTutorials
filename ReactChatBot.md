@@ -1,7 +1,7 @@
 # Beginner-Friendly Guide: Build a Simple AI Chatbot with React & OpenAI
 
 ## What You'll Create
-A simple chatbot that uses OpenAI's new Responses API - letting you see both the AI's answer AND its reasoning process!
+A simple chatbot that uses OpenAI's new Responses API - letting you interact with the OpenAi Models!
 
 ## What You Need Before Starting
 - Basic knowledge of JavaScript
@@ -276,7 +276,6 @@ Open the URL shown in your terminal (usually http://localhost:5173) to see your 
    - Your question (in blue)
    - The AI's answer (in light green)
 
-![Example conversation with the chatbot](https://i.imgur.com/placeholder3.jpg)
 
 ## Common Errors and How to Fix Them
 
@@ -295,7 +294,6 @@ This is a security feature of browsers. To fix it:
 
 ## Make Your Chatbot Even Better!
 
-
 ### Make Your Bot Remember the Conversation
 To make your bot remember previous messages, you'll need to store the conversation history. Find:
 
@@ -310,8 +308,55 @@ messages: [...previousMessages, { role: "user", content: userMessage }],
 
 Where `previousMessages` is an array of past messages you maintain in your component's state.
 
+## Production Deployment Recommendation
+
+For production applications, it's strongly recommended that you deploy the AI interaction logic to a backend server rather than making API calls directly from the frontend. This approach provides several important benefits:
+
+1. **Security**: Keeps your API keys hidden and protected
+2. **Cost control**: Allows for better monitoring and rate limiting of API calls
+3. **Performance**: Reduces client-side load and improves responsiveness
+4. **Flexibility**: Makes it easier to switch between different AI providers or models
+
+You can create a simple Node.js/Express backend to handle the OpenAI API calls, then have your React frontend communicate with your backend server. This creates a more secure and scalable architecture for real-world applications.
+
 ## Learn More
 - [OpenAI API Documentation](https://platform.openai.com/docs)
 - [React Documentation](https://react.dev/learn)
 - [Vite Documentation](https://vitejs.dev/guide/)
 - [Complete React Chatbot Tutorial](https://www.youtube.com/results?search_query=react+openai+chatbot+tutorial)
+
+## Follow me for more tips, tricks, and real AI builds.
+👉 Newsletter: [https://www.linkedin.com/build-relation/newsletter-follow?entityUrn=7322659209190203392](https://www.linkedin.com/build-relation/newsletter-follow?entityUrn=7322659209190203392)
+👉 GitHub: [https://github.com/cpTheAideveloper/miniTutorials](https://github.com/cpTheAideveloper/miniTutorials)
+👉 Website: [https://www.the-aideveloper.com/](https://www.the-aideveloper.com/)
+👉 YouTube: [https://www.youtube.com/@theaideveloper](https://www.youtube.com/@theaideveloper)
+
+## 🎉 OFF30 - Get **30% Off** Any Project!  
+*First-time purchases only.*
+---
+## 🚀 Projects Section  
+### 🌟 Projects Available  
+💡 **ChatGPT Dev Tool Kit:** 👉 [Get the Code](https://checkout.the-aideveloper.com/b/4gw6p74j41YSf0Q5lf)
+---
+## 📚 Resources Mentioned in the Video
+- **[Free Guides](https://www.the-aideveloper.com/guides)**  
+- **[Projects for Sale](https://www.the-aideveloper.com/projects)**  
+- **[My Website](https://www.the-aideveloper.com/)**  
+---
+## 🌐 Connect with Me:  
+- **YouTube**: [The AI Developer](https://www.youtube.com/@theaideveloper)  
+- **Instagram**: [@cptheaideveloper](https://www.instagram.com/cptheaideveloper/)  
+- **Twitter**: [@cpaideveloper](https://x.com/cpaideveloper)  
+- **TikTok**: [@codingnutella](https://www.tiktok.com/@codingnutella)  
+- **LinkedIn**: [The AI Developer](https://www.linkedin.com/company/theaidevelopercp/)  
+- **Github**: [The AI Developer](https://github.com/cpTheAideveloper)  
+---
+## 📄 License
+This repository is released under the [MIT License](LICENSE). Feel free to use it for personal or commercial projects. 🚀
+----
+# 🚀 Learn to Build AI Applications!
+Learn to develop your own **AI applications** using SDKs from ChatGPT, Google, Facebook, and more! Explore programming languages like **JavaScript**, **TypeScript**, and **Python**, and frameworks like **Next.js** to design your future AI SaaS applications. 💻✨
+---
+## 🎥 Video Tutorial
+[![Watch the video](https://img.youtube.com/vi/L68y_GRg_6o/0.jpg)](https://youtu.be/9NruSjjnkZs)
+**🎥 Watch the Video Here: [How to Build AI Applications](https://youtu.be/9NruSjjnkZs)**
