@@ -49,6 +49,7 @@ VITE_OPENAI_KEY=sk-...
 ### Step 4: Create Your Chat Component
 Create a new file called `Chat.jsx` in the `src` folder and paste this code:
 
+```jsx
 import { useState } from "react";
 
 // Function that calls the OpenAI API with the updated response format
