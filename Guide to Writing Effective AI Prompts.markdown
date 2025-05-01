@@ -1,12 +1,9 @@
-# A Simple Guide to Writing Great AI Prompts
+# A Practical Guide to Writing Effective AI Prompts
 
-This guide explains how to create clear and effective prompts for AI in plain, easy-to-understand language. Whether you're asking an AI to answer a question, write a story, or solve a problem, a well-crafted prompt helps you get the best results. Follow these steps to make your prompts professional, clear, and user-friendly.
-
----
 
 ## What Is a Prompt?
 
-A prompt is the instruction or question you give an AI to get a response. Think of it like giving directions to a friend—you need to be clear about what you want and provide enough details to avoid confusion. A good prompt tells the AI exactly what to do and how to do it.
+A prompt is simply the instruction, question, or text you give to an AI to get it to do something – like answer a question, write text, summarize information, or generate ideas. You are essentially "programming the AI with words."
 
 ---
 
