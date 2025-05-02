@@ -4,16 +4,16 @@ This guide explains how a basic AI app — like a chatbot or a content generator
 
 ```mermaid
 graph TD
-  A[Component mounts] --> B[useActionState initializes with initialState]
-  B --> C[User types in form]
-  C --> D[Clicks Submit]
-  D --> E[formAction triggers handleSubmit(prevState, formData)]
-  E --> F[handleSubmit runs logic (e.g., validate, send request)]
+  A[Component mounts] --> B[useActionState initializes with initial state]
+  B --> C[User types in form fields]
+  C --> D[User clicks Submit]
+  D --> E[formAction triggers handleSubmit with form data and previous state]
+  E --> F[handleSubmit processes: validation or API request]
   F --> G[Returns new state object]
-  G --> H[state updates with new result]
-  H --> I[UI re-renders with new state]
-  F --> J[isPending = true during submission]
-  G --> K[isPending = false after result]
+  G --> H[State updates and UI re-renders]
+  F --> I[isPending set to true during submission]
+  G --> J[isPending set to false after completion]
+
 ```
 
 ---
