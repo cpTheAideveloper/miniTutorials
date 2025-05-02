@@ -1,30 +1,33 @@
 ```mermaid
+```mermaid
 graph TD
-    A[Start] --> B[Initialize useActionState]
-    B --> C[Set Initial State]
+    A[useActionState Hook] --> B[What You Provide]
+    B --> C[Action Function]
+    B --> D[Initial State]
     
-    C --> D[Form Rendered with formAction]
+    C --> C1[Receives previous state and form data as arguments]
+    C --> C2[Defines what happens when form is submitted]
     
-    D --> E{User Submits Form}
-    E --> |Form Submitted| F[isPending = true]
-    F --> G[Extract Form Data]
-    G --> H[Call Action Function]
+    D --> D1[Starting value for your form's state]
     
-    H --> I{Process Result}
-    I --> |Success| J[Update State with Success Data]
-    I --> |Error| K[Update State with Error Message]
+    A --> E[What the Hook Returns]
+    E --> F[state]
+    E --> G[formAction]
+    E --> H[isPending]
     
-    J --> L[isPending = false]
-    K --> L
+    F --> F1[Current state of the form]
+    F1 --> F2[Updates based on action function's return value]
     
-    L --> M[Re-render Component]
-    M --> N{Check State}
+    G --> G1[Function assigned to form's action attribute]
+    G1 --> G2[Handles form submissions]
     
-    N --> |Success| O[Show Success UI]
-    N --> |Error| P[Show Error Message]
-    N --> |Neither| Q[Show Default Form]
+    H --> H1[Boolean value]
+    H1 --> H2[Indicates if form submission is in progress]
     
-    O --> R[End]
-    P --> E
-    Q --> E
+    I[Example Usage] --> J[React Component]
+    J --> K[1. Initialize with useActionState]
+    K --> L[2. Access state, formAction, isPending]
+    L --> M[3. Render UI based on state]
+    M --> N[4. Attach formAction to form]
+
 ```
