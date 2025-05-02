@@ -3,23 +3,17 @@
 This guide explains how a basic AI app — like a chatbot or a content generator — actually works behind the scenes, based on this simple flow:
 
 ```mermaid
-flowchart TD
-  User([User Browser]) -->|writes prompt| Frontend([React Frontend])
-  Frontend -->|POST /api/ai-request| Backend([Node.js Server])
-  
-  Backend -->|Validate & Prepare| Middleware([Middleware Layer])
-  
-  Middleware -->|Send request| AIAPI([External AI API like OpenAI, Claude, Gemini])
-  
-  AIAPI -->|Streams tokens| StreamHandler([Streaming Handler])
-  StreamHandler -->|Emit partial text| WebSocket([WebSocket Connection])
-  WebSocket -->|Update UI| Frontend
-  
-  Frontend -->|Display live response| User
-  
-  Backend -->|Logs request & response| Database[(Database)]
-  
-  click AIAPI "https://openai.com" _blank
+graph TD
+  A[Component mounts] --> B[useActionState initializes with initialState]
+  B --> C[User types in form]
+  C --> D[Clicks Submit]
+  D --> E[formAction triggers handleSubmit(prevState, formData)]
+  E --> F[handleSubmit runs logic (e.g., validate, send request)]
+  F --> G[Returns new state object]
+  G --> H[state updates with new result]
+  H --> I[UI re-renders with new state]
+  F --> J[isPending = true during submission]
+  G --> K[isPending = false after result]
 ```
 
 ---
