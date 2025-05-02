@@ -1,5 +1,4 @@
 ```mermaid
-```mermaid
 graph TD
     A[useActionState Hook] --> B[What You Provide]
     B --> C[Action Function]
